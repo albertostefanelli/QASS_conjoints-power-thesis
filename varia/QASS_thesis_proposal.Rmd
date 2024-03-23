@@ -1,0 +1,71 @@
+---
+title: "THESIS PROPOSAL: Power Analysis in Conjoint Experiments"
+author: Alberto Stefanelli^[[Alberto Stefanelli](https://albertostefanelli.com/) is an FWO Ph.D Fellow at the Institute for Social and Political Opinion Research and a Fulbright Visiting Fellow at Yale University and New York University. Email:\hspace{0.1cm} alberto.stefanelli@kuleuven.be].
+bibliography: tidy_references.bib
+link-citations: true
+#biblio-style: apalike
+urlcolor: blue
+abstract: \noindent 
+output: 
+    # bookdown::pdf_document2:
+    #   number_sections: false
+    #   toc: false
+    #   fig_caption: yes
+    #   fig_width: 7
+    #   fig_height: 7
+    #   keep_tex: no
+    #   latex_engine: lualatex
+    bookdown::word_document2:
+       number_sections: false
+       keep_md: false
+       reference_docx: mystyles.docx
+       toc: false
+       global_numbering: True
+mainfont: "Times New Roman"
+fontsize: 12pt
+#geometry: margin=2cm
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{fancyhdr}
+  - \fancyhf{}
+  - \pagestyle{fancy}
+  - \fancyhead[R]{The Conditional Effect of Populism on Opinion Extremity}
+  #- \fancyfoot[R]{\thepage}
+  #- \fancyhead[OL]{Populism and Polarization in the US Mass Public}
+  #- \fancyhead[RE]{Alberto Stefanelli}
+  - \fancyfoot[C]{\thepage}
+  - \usepackage{float}
+  - \usepackage{setspace}\doublespacing
+  - \usepackage{lscape}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \usepackage{tabularx}
+  - \usepackage{endnotes}
+  - \let\footnote=\endnote
+---
+
+**PROPOSED SUPERVISOR: Bart Meuleman**
+
+# Problem Statement 
+
+In the social sciences, conjoint experiments have become a prominent methodological tool to measure causal effects of many attributes, modelling complex and multidimensional preferences. These include various phenomena, such as preferences for political candidates, immigrant admissions, or public policies. The fully randomized design introduced by @hainmueller_causal_2014 was a marked change and a driving force behind the recent rise in conjoint experiments in political science, sociology, and economics. The quantity of interest—the average marginal component effect (AMCE) is available as a result of the randomized con- joint design that breaks any explicit or implicit confounding between features of the experiment.
+
+The raising popularity of conjoint experiments is due to the possibility of manipulating multiple components (i.e., attributes) of interest and estimate the effects of an attribute at several levels of the other attributes. This design---usually called factorial design---have a long long tradition in the social sciences, but testing for numerous attributes at once quickly becomes infeasible due to the necessity of a large number of observations. Despite the rising popularity of conjoint studies, researchers often disregard this issue with the consequence that *a priori* power analysis is often ignored when designing conjoint experiments. For instance, scholars have argued that conjoint designs "free us from the power constraints that limit traditional factorial experiments" [@kertzer_how_2019, pp. 7] and solve key problems in experimental research such as "the trade-off between statistical power and the desire to employ many experimental conditions" [@knudsen_beyond_2018, pp. 2]. 
+
+Power analysis consists of assessing the probability of successfully rejecting the null hypothesis when it is *false*. In other words, it can be used to estimate the required sample size to detect an effect of a given size with a certain degree of confidence and precision. Power analysis also reduces the chances of obtaining false-positives or exaggerated findings [@gelman_carlin2014]. The difficulty in replicating some experimental studies or the emergence of contradictory results in the literature are caused---*inter alia*---by under-powered experimental designs [@OSC2015; @Maxwell2004]. The reason is that studies with low power are more likely to yield large and significant effects that are due to random fluctuations alone. Finally, *a priori* power analysis can save costs by cautioning against over-powered designs with a much higher number of respondents (and, thus, higher costs) than necessary for discovering the hypothesized effect. 
+
+Despite their growing popularity, calculating power for a conjoint experiment is not a trivial task. Compared to traditional survey experiments, conjoint applications present a relatively large number of design choices. In addition to sample and effect size considerations, experimentalists need to decide on the number of attributes (the features of the profiles, such as the gender of a hypothetical candidate), the number of levels of such attributes (the values of that attributes can take, such as male or female), and the number of tasks (the number of profile choices a respondent will undertake). This adds a layer of complexity to the analysis of statistical power with respect to the trade-off between the number of experimental conditions, the number of tasks that each respondent shall undertake, and the required sample size.
+
+# Power Analysis for Conjoint Expeirments
+
+Previous research on sample size requirements for conjoint experiments is slim and fails to provide accurate guidance for designing conjoint experiments [@orme_sample_1998; @louviere_stated_2000; @rose_sample_2013]. The few works on the topic do not directly focus on the approach proposed by @hainmueller_causal_2014 and typically disregard the number of attributes and levels included in the design [e.g., @louviere_stated_2000; @rose_sample_2013]. In addition, current literature provides no indications of the impact of design choices on the probability of an estimate being biased upward or downward (the *Type M error)* or being in the wrong direction (the *Type S error*). The only exception is @Schuessler2020 who employ parametric techniques from traditional discrete choice experiment to derive minimal sample size for conjoint experiments. However, their approach cannot be easily expanded to accommodate more complex designs, do not distinguish between the number of respondents and the number of trials, and omits the cluster structure typically found in conjoint designs.
+
+Therefore, this work aims at developing a flexible simulation-based framework based on the approach proposed by @hainmueller_causal_2014 that accommodates a vast range of design choices and ensures that they are adequate for drawing accurate inferences. In addition to the derivation of the minimal required sample size given the number of respondents and experimental conditions, our approach adds to the existing literature by providing guidance on the exchangeability between respondents and repeated tasks. In applied research, this can be used to obtain useful insights on whether designs with low number of respondents who fulfil a large number of tasks is as good as having a larger number of respondents who perform just a few tasks. Given a range of pre-specified effect sizes, I also allow researchers to easily adjust the degree of confidence of the estimated parameters and, thus, directly evaluate the trade-off between the false-positive and false-negative. Lastly, the proposed framework accommodates more complex theoretical scenarios or sampling strategies. For instance, effect heterogeneity can be included to perform power calculations when researchers anticipate that two or more groups of respondents have substantially different preferences towards some of the attributes included in the design [e.g., @kirkland_candidate_2018].
+
+# Validation and Application
+
+The calculation of power analysis for conjoint experiments that use the approach proposed by @hainmueller_causal_2014 is done by means of an extensive simulation study. The thesis is based on the working paper of @lukac_stefanelli_2020. The aim is to investigate how power changes depending on several features: the sample size, number of tasks performed by each respondent, the number of levels of an attribute, and the size of the measured effect in the population. Furthermore, I will investigate the cases when conjoint experiments are used to discover treatment heterogeneity in two different sub-populations (e.g., female and male). In order to do this, I will simulate data from a conjoint experiment coming from a single, two or more sub-populations with heterogeneous treatment effects and with different prevalence of sub- populations. The simulation will also take into account situations where observations are organized in clusters (e.g., countries) and will investigate the minimum number of respondents needed to benefit from the cluster robust variance matrix estimator's asymptotic properties [@arceneaux_2005_using]. 
+
+
+
+# References
